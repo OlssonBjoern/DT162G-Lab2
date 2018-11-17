@@ -1,0 +1,32 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Laboration 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <h1>Hello world</h1>
+
+    <ul id="courselist"></ul>
+    <h2>Add course</h2>
+    <form metod="post" action="http://localhost:3000/courses/add/">
+    
+        <label for="courseId">Kurs-Id</label><br>
+        <input type="text" name="courseId"><br>
+
+        <label for="courseName">Kursnamn</label><br>
+        <input type="text" name="courseName"><br>
+
+        <label for="coursePeriod">Kursperiod</label><br>
+        <input type="text" name="coursePeriod"><br>
+
+        <input type="submit" value="Add course">
+    
+    </form>
+</body>
+</html>

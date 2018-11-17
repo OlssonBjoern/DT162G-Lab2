@@ -7,7 +7,7 @@ var jsonfile = require("jsonfile");
 /* READ JSONFILE */
 
 var file = "courses.json";
-var course = [];
+var courses = [];
 
 jsonfile.readFile(file, function(err, obj) {
     if(err) {
@@ -40,7 +40,7 @@ app.get("/courses", function(req, res) {
 
 
 // Add course
-app.post("/courses/add", function(req, res) {
+app.post("/courses/course/add", function(req, res) {
     //Get next id
     var newId = getNextId(courses);
 
@@ -67,12 +67,12 @@ app.post("/courses/add", function(req, res) {
 
 
 // Delete course
-app.delete("/courses/course/delete/:id", function(req, res) {
-    var deleteId = req.params.id;
+app.delete("/courses/course/delete/:_id", function(req, res) {
+    var deleteId = req.params._id;
 
     //Find right course to delete
     for(var i=0; i<courses.length; i++) {
-        if(courses[i].id == deleteId) {
+        if(courses[i]._id == deleteId) {
             courses.splice(i, 1);
         }
     }
@@ -95,7 +95,7 @@ function getNextId(arr) {
     var max = 0;
 
     for(var i=0; i<arr.length; i++) {
-        var current = parseInt(arr[i].id);
+        var current = parseInt(arr[i]._id);
         if(current > max) { max = current; }
     }
 

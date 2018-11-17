@@ -24,10 +24,10 @@ function getSingleCourse(id) {
     });
 }
 
-function deleteCourse(id) {
+function deleteCourse(_id) {
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:3000/courses/delete" + id 
+        url: "http://localhost:3000/courses/delete/" + _id 
     }).done(function(response) {
         console.log(response);
     });

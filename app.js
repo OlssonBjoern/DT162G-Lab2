@@ -38,16 +38,17 @@ app.get("/courses", function(req, res) {
 
 
 //Show uniqe id
-app.get("courses/course/:id", function(req, res) {
+app.get("/courses/:id", function(req, res) {
     var getSingleId = req.params.id;
-    foundCourse = "No course found";
+    var ind = -1;
 
     //Find right course to show
-    for(var i=0; i<courses.length; i++) {
-        if(courses[i]._id == getSingleId) {
-            res.send({ "message" : "Showing course with ID " + getSingleId});
-        }
-    }
+    for(var i=0; i < courses.length; i++) {
+        if(courses[i]._id == getSingleId) ind = i;
+    } 
+    console.log(courses[ind]);
+    res.contentType('application/json');
+    res.send(ind>=0 ? courses[ind] : '{}');
 });
 
 

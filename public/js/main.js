@@ -6,21 +6,12 @@ function loadCourses() {
     $.getJSON("http://localhost:3000/courses", function(data) {
         
         //Clear list
-        //$("#courselist").html("");
+        $("#courselist").html("");
         for(var i=0; i<data.length; i++) {
             $("#courselist").append(
-                "<li>" + data[i].courseId + " " + data[i].courseName + " " + data[i].coursePeriod + " <button onclick='deleteCourse("+ data[i]._id + ")'>Delete</button> <button onclick='getSingleCourse("+ data[i]._id + ")'>Show course</button> </li>")
+                "<li>" + data[i].courseId + " - Name: " + data[i].courseName + " - Period: " + data[i].coursePeriod + " | <i class='fas fa-trash-alt' onclick='deleteCourse("+ data[i]._id + ")'></i> </li><br>")
         }
 
-    });
-}
-
-function getSingleCourse(id) {
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:3000/courses/course/" + id 
-    }).done(function(response) {
-        console.log(response);
     });
 }
 

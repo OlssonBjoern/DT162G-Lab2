@@ -18,17 +18,20 @@ function loadCourses() {
 function getSingleCourse(id) {
     $.ajax({
         type: "GET",
-        url: "http://localhost:3000/courses/course" + id 
+        url: "http://localhost:3000/courses/course/" + id 
     }).done(function(response) {
         console.log(response);
     });
 }
 
-function deleteCourse(_id) {
+function deleteCourse(id) {
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:3000/courses/delete/" + _id 
+        url: "http://localhost:3000/courses/course/delete/" + id 
     }).done(function(response) {
         console.log(response);
+
+        //Reload list
+        loadCourses();
     });
 }

@@ -5,13 +5,12 @@ var path = require("path");
 var jsonfile = require("jsonfile");
 
 /* READ JSONFILE */
-
 var file = "courses.json";
 var courses = [];
 
 jsonfile.readFile(file, function(err, obj) {
     if(err) {
-        console.log(err)
+        console.log(err);
     } else {
         console.log(obj),
         courses = obj;
@@ -35,6 +34,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/courses", function(req, res) {
     console.log("Send all courses");
     res.send(courses);
+});
+
+
+//Show uniqe id
+app.get("courses/course/:id", function(req, res) {
+    var getSingleId = req.params.id;
+    foundCourse = "No course found";
+
+    //Find right course to show
+    for(var i=0; i<courses.length; i++) {
+        if(courses[i]._id == getSingleId) {
+            res.send({ "message" : "Showing course with ID " + getSingleId});
+        }
+    }
 });
 
 
@@ -67,8 +80,8 @@ app.post("/courses/course/add", function(req, res) {
 
 
 // Delete course
-app.delete("/courses/course/delete/:_id", function(req, res) {
-    var deleteId = req.params._id;
+app.delete("/courses/course/delete/:id", function(req, res) {
+    var deleteId = req.params.id;
 
     //Find right course to delete
     for(var i=0; i<courses.length; i++) {

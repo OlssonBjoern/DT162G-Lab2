@@ -92,7 +92,7 @@ app.post("/courses/update/:id", function(req, res) {
     course.courseProgression = req.body.editedCourseProgression;
     course.courseSemester = req.body.editedCourseSemester;
 
-    var query = {_id:req.params._id}
+    var query = {id:req.params._id}
 
     Courses.updateOne(query, course, function(err) {
         if(err) {

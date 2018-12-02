@@ -23,8 +23,14 @@ function getSingleCourse(id) {
     }).done(function(response) {
             $("#editformdiv").show("fast");
             $("#editformdiv").html(
-                "<h1>Redigera "+ response.courseId +"</h1><form class='editform' method='post' action='http://localhost:3000/courses/update/'><input type='text' name='editedCourseId' placeholder='"+ response.courseId+"'><br><br><input type='text' name='editedCourseName' placeholder='"+ response.courseName+"'><br><br><input type='text' name='editedCoursePlan' placeholder='"+ response.coursePlan+"'><br><br><input type='text' name='editedCourseProgression' placeholder='"+ response.courseProgression+"'><br><br><input type='text' name='editedCourseSemester' placeholder='"+ response.courseSemester+"'><br><br><input type='submit' value='Edit course'></form>"
-            )
+                "<h1>Redigera "+ response.courseId +"</h1><form class='editform' method='post' action='http://localhost:3000/courses/update/"+ response._id + "'><input type='text' name='editedCourseId' id='editedCourseId' placeholder='"+ response.courseId+"'><br><br><input type='text' name='editedCourseName' id='editedCourseName' placeholder='"+ response.courseName+"'><br><br><input type='text' name='editedCoursePlan' id='editedCoursePlan' placeholder='"+ response.coursePlan+"'><br><br><input type='text' name='editedCourseProgression' id='editedCourseProgression' placeholder='"+ response.courseProgression+"'><br><br><input type='text' name='editedCourseSemester' id='editedCourseSemester' placeholder='"+ response.courseSemester+"'><br><br><input type='submit' value='Edit course'></form>"
+            );
+            //Prefill form
+            $("#editedCourseId").val(response.courseId);
+            $("#editedCourseName").val(response.courseName);
+            $("#editedCoursePlan").val(response.coursePlan);
+            $("#editedCourseProgression").val(response.courseProgression);
+            $("#editedCourseSemester").val(response.courseSemester);
     });
 }
 

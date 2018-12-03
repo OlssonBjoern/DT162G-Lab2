@@ -83,7 +83,7 @@ app.post("/courses/course/add", function(req, res) {
     //res.send({"message": "Adding course"});
 });
 
-app.post("/courses/update/:id", function(req, res) {
+app.post("/courses/course/update/:id", function(req, res) {
     var course = {};
 
     course.courseId = req.body.editedCourseId;
@@ -92,7 +92,7 @@ app.post("/courses/update/:id", function(req, res) {
     course.courseProgression = req.body.editedCourseProgression;
     course.courseSemester = req.body.editedCourseSemester;
 
-    var query = {id:req.params._id}
+    var query = {_id:req.params._id}
 
     Courses.updateOne(query, course, function(err) {
         if(err) {
